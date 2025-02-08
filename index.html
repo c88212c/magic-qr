@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 微信风格CSS */
+    body {
+      font-family: -apple-system, sans-serif;
+      background: #f5f5f5;
+      text-align: center;
+    }
+    .profile-card {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      margin: 10px auto;
+    }
+    .nickname {
+      font-size: 18px;
+      margin: 10px;
+    }
+    .heart {
+      font-size: 60px;
+      cursor: pointer;
+      transition: transform 0.3s;
+      color: #ff4081;
+      margin: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .wechat-button {
+      background: #07c160;
+      color: white;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-card">
+    <img src="https://img2.baidu.com/it/u=1479517636,1382059044&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" class="avatar">
+    <div class="nickname">魔术师春峰</div>
+    <div class="region">中国 丽水</div>
+    <div class="heart" id="heart">❤️</div>
+    <div class="wechat-button">添加到通讯录</div>
+    <div id="magicTrigger" class="hidden">✨ 魔法即将降临！</div>
+  </div>
+
+  <script>
+    let clickCount = 0;
+    const heart = document.getElementById('heart');
+    const trigger = document.getElementById('magicTrigger');
+
+    heart.addEventListener('click', () => {
+      clickCount++;
+      // 爱心放大效果
+      heart.style.transform = `scale(${1 + clickCount*0.2})`;
+      
+      // 触发条件（例如点击10次）
+      if (clickCount === 10) {
+        trigger.classList.remove('hidden');
+        // 此处可添加音效（需准备音频文件）
+        new Audio('magic_sound.mp3').play();
+      }
+    });
+  </script>
+</body>
+</html>
